@@ -1,1 +1,2 @@
 vmess://eyJhZGQiOiJ0dXJrLmltZ29kMS5zaG9wIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiIiLCJpZCI6ImY5MWE5YmQ3LWU4NjQtNDhjYy1hNzA5LWRmYzI3ZWE5ZTBmMCIsIm5ldCI6InRjcCIsInBhdGgiOiIvIiwicG9ydCI6IjI2MjIzIiwicHMiOiJUdXJiby03QUMzIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJodHRwIiwidiI6IjIifQ==
+vless://980cc4ce-8cee-4acc-a77e-a7d78ef6c068@t1.specialfun.shop:8451?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%87%AC%F0%9F%87%A7+%D9%81%D9%82%D8%B7+%D9%85%D8%AE%D8%A7%D8%A8%D8%B1%D8%A7%D8%AA+
