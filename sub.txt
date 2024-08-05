@@ -4,6 +4,6 @@ vless://8941439c-f989-40ae-9057-f4c0f961073f@m3.specialtiam.shop:2083?mode=gun&s
 vless://8941439c-f989-40ae-9057-f4c0f961073f@s2.liionspecial.shop:2053?mode=gun&security=none&encryption=none&authority=&type=grpc&serviceName=2096vless#%F0%9F%87%A9%F0%9F%87%AANuremberg
 vless://8941439c-f989-40ae-9057-f4c0f961073f@munich.specialviip.shop:2050?mode=gun&security=none&encryption=none&authority=&type=grpc&serviceName=2096vless#%F0%9F%87%A9%F0%9F%87%AAMunich
 vless://8941439c-f989-40ae-9057-f4c0f961073f@helsinki.specialsersto.shop:1033?mode=gun&security=none&encryption=none&authority=&type=grpc&serviceName=2096vless#%F0%9F%87%AB%F0%9F%87%AEHelsinki
-vless://8941439c-f989-40ae-9057-f4c0f961073f@ircell.specialjac.shop:3002?mode=gun&security=none&encryption=none&authority=&type=grpc&serviceName=2096vless#%F0%9F%87%B8%F0%9F%87%AASweden
+vless://8941439c-f989-40ae-9057-f4c0f961073f@s5ss.speciallvip.shop:3001?mode=gun&security=none&encryption=none&authority=&type=grpc&serviceName=2096vless#%F0%9F%87%B3%F0%9F%87%B1Amsterdam
 vmess://eyJhZGQiOiJuczMuaXJsaWdodG1vb25zLmNvbSIsImFpZCI6IjAiLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiZ29vZ2xlLmNvbSIsImlkIjoiMmIyNGEwMTUtYzQ3Yy00YWJmLThkNGEtMzQ5ZTIzODVkZGMwIiwibmV0IjoidGNwIiwicGF0aCI6Ii8iLCJwb3J0IjoiODA4MSIsInBzIjoiTS5Ub3DinYTvuI9JcmFuY2VsbCIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOiIiLCJ0eXBlIjoiaHR0cCIsInYiOiIyIn0=
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpwcFVSblQ0dzNTZl9HRklET1lqbWhn@ns5.irlightmoons.com:1080#M.Top%E2%9D%84%EF%B8%8FRaitel
