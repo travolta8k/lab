@@ -46,7 +46,7 @@
   ],
   "outbounds": [
     {
-      "tag": "🇦🇪-Dubai-همراه اول🔵📶",
+      "tag": "🇳🇱-NL-همراه اول🔵📶",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -69,8 +69,8 @@
         "security": "none",
         "wsSettings": {
           "headers": {
-            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.ae.UpILoaD.Ir.",
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.nl.UpILoaD.Ir.",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
           },
           "path": "/impr0/?ed=1024"
         }
@@ -87,7 +87,9 @@
     "domainStrategy": "AsIs",
     "rules": []
   },
-  "remarks": "🇦🇪-Dubai-همراه اول🔵📶"
+  "remarks": "🇳🇱-NL-همراه اول🔵📶"
+}
+{
   "log": {
     "access": "",
     "error": "",
@@ -135,7 +137,7 @@
   ],
   "outbounds": [
     {
-      "tag": "🇳🇱-NL-همراه اول🔵📶",
+      "tag": "🇹🇷-turkey-همراه اول🔵📶",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -158,8 +160,8 @@
         "security": "none",
         "wsSettings": {
           "headers": {
-            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.nl.UpILoaD.Ir.",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
+            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.tr.UpILoaD.Ir.",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
           },
           "path": "/impr0/?ed=1024"
         }
@@ -176,5 +178,5 @@
     "domainStrategy": "AsIs",
     "rules": []
   },
-  "remarks": "🇳🇱-NL-همراه اول🔵📶"
+  "remarks": "🇹🇷-turkey-همراه اول🔵📶"
 }
