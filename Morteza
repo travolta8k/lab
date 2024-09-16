@@ -46,7 +46,7 @@
   ],
   "outbounds": [
     {
-      "tag": "🇳🇱-NL-همراه اول🔵📶",
+      "tag": "🇹🇷-turkey-همراه اول🔵📶",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -69,8 +69,8 @@
         "security": "none",
         "wsSettings": {
           "headers": {
-            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.nl.UpILoaD.Ir.",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0"
+            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.tr.UpILoaD.Ir.",
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
           },
           "path": "/impr0/?ed=1024"
         }
@@ -87,8 +87,9 @@
     "domainStrategy": "AsIs",
     "rules": []
   },
-  "remarks": "🇳🇱-NL-همراه اول🔵📶"
+  "remarks": "🇹🇷-turkey-همراه اول🔵📶"
 }
+......
 {
   "log": {
     "access": "",
@@ -137,7 +138,7 @@
   ],
   "outbounds": [
     {
-      "tag": "🇹🇷-turkey-همراه اول🔵📶",
+      "tag": "🇳🇱-NL-همراه اول🔵📶",
       "protocol": "vmess",
       "settings": {
         "vnext": [
@@ -160,8 +161,8 @@
         "security": "none",
         "wsSettings": {
           "headers": {
-            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.tr.UpILoaD.Ir.",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+            "Host": "mci.ir.irancell.ir.www.speedtest.net.anten.ir.arvancloud.ir.soft98.ir.bmi.ir.nl.UpILoaD.Ir.",
+            "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/25.0 Chrome/121.0.0.0 Mobile Safari/537.36"
           },
           "path": "/impr0/?ed=1024"
         }
@@ -178,5 +179,5 @@
     "domainStrategy": "AsIs",
     "rules": []
   },
-  "remarks": "🇹🇷-turkey-همراه اول🔵📶"
+  "remarks": "🇳🇱-NL-همراه اول🔵📶"
 }
