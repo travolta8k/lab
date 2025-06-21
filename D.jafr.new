@@ -1,6 +1,2 @@
 vmess://eyJhZGQiOiJoYW1yYWguaXB5YXIub3JnIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiIiLCJpZCI6IjhhY2EwODNkLTVlNDUtNDIzMi05NTJmLTJhOGVmYWQzNjMwYiIsIm5ldCI6InRjcCIsInBhdGgiOiIiLCJwb3J0IjoiMzIwMjAiLCJwcyI6IvCfl5PvuI8gMzEvMDMvMTQwNCDwn5eT77iPIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ==
-vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2001?security=none&type=tcp&headerType=&path=&host=#4%20%F0%9F%87%A9%F0%9F%87%AA%20Germany%20fcvip
-vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2002?security=none&type=tcp&headerType=&path=&host=#5%20%F0%9F%87%B3%F0%9F%87%B1%20Holland%20fcvip
-vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2003?security=none&type=tcp&headerType=&path=&host=#6%20%F0%9F%87%AC%F0%9F%87%A7%20UnitedKingdom%20fcvip
-vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2004?security=none&type=tcp&headerType=&path=&host=#7%20%F0%9F%87%A8%F0%9F%87%A6%20Toronto%20fcvip
-vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2005?security=none&type=tcp&headerType=&path=&host=#8%20%F0%9F%87%BA%F0%9F%87%B8%20fcvip
+vmess://eyJhZGQiOiJzZXJ2ZXJzLnh2b24uaW4iLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiOGZjNTZlM2EtZWJkNS00NDMyLWJjMjYtOGNhM2Q0M2NkNWU3IiwibmV0IjoidGNwIiwicGF0aCI6Ii8iLCJwb3J0IjoiMjA4NyIsInBzIjoiTmV08J+Mn21lbGnwn4eu8J+HtyIsInNjeSI6ImF1dG8iLCJzbmkiOiJzZXJ2ZXJzLnh2b24uaW4iLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoiaHR0cCIsInYiOiIyIn0=
