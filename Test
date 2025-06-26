@@ -5,3 +5,118 @@ vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2002?securit
 vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2003?security=none&type=tcp&headerType=&path=&host=#6%20%F0%9F%87%AC%F0%9F%87%A7%20UnitedKingdom%20fcvip
 vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2004?security=none&type=tcp&headerType=&path=&host=#7%20%F0%9F%87%A8%F0%9F%87%A6%20Toronto%20fcvip
 vless://35a217c3-6c33-4859-8360-a0faa721d98a@clconf.webtohossein.ir:2005?security=none&type=tcp&headerType=&path=&host=#8%20%F0%9F%87%BA%F0%9F%87%B8%20fcvip
+{
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "0.0.0.0",
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    },
+    {
+      "tag": "http",
+      "port": 10809,
+      "listen": "0.0.0.0",
+      "protocol": "http",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "172.67.169.150",
+            "port": 443,
+            "users": [
+              {
+                "id": "f477da56-641b-47ec-a7a0-f01a48545705",
+                "security": "auto",
+                "encryption": "none",
+                "email": "https://gozargah.github.io/marzban/",
+                "alterId": 0
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "nl.uploadsho.com",
+          "allowInsecure": false,
+          "fingerprint": "chrome",
+          "alpn": [
+            "http/1.1"
+          ],
+          "show": false
+        },
+        "wsSettings": {
+          "headers": {
+            "Pragma": "no-cache"
+          },
+          "path": "/upload/?ed=2560",
+          "host": "nl.uploadsho.com"
+        },
+        "sockopt": {
+          "dialerProxy": "dialer"
+        }
+      }
+    },
+    {
+      "tag": "dialer",
+      "protocol": "freedom",
+      "settings": {
+        "fragment": {
+          "packets": "tlshello",
+          "length": "10-20",
+          "interval": "1-3"
+        }
+      }
+    }
+  ],
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ]
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": []
+  },
+  "remarks": "🇳🇱-NL-🇳🇱"
+}
