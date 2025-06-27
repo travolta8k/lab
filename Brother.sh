@@ -1,1 +1,8 @@
-
+vmess://eyJhZGQiOiJoYW1yYWguaXB5YXIub3JnIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiIiLCJpZCI6IjhhY2EwODNkLTVlNDUtNDIzMi05NTJmLTJhOGVmYWQzNjMwYiIsIm5ldCI6InRjcCIsInBhdGgiOiIiLCJwb3J0IjoiMzIwMjAiLCJwcyI6IvCfl5PvuI8gMDYvMDQvMTQwNCDwn5eT77iPIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ==
+vmess://eyJhZGQiOiJzZXJ2ZXJzLnh2b24uaW4iLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiOGZjNTZlM2EtZWJkNS00NDMyLWJjMjYtOGNhM2Q0M2NkNWU3IiwibmV0IjoidGNwIiwicGF0aCI6Ii8iLCJwb3J0IjoiMjA4NyIsInBzIjoiVG9w8J+agFZwbiIsInNjeSI6ImF1dG8iLCJzbmkiOiJzZXJ2ZXJzLnh2b24uaW4iLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoiaHR0cCIsInYiOiIyIn0=
+vless://f477da56-641b-47ec-a7a0-f01a48545705@dl1.dlzed.com:443?path=%2Fupload%2F%3Fed%3D2560&security=tls&alpn=h3&encryption=none&host=de.uploadsho.com&fp=chrome&type=ws&sni=de.uploadsho.com#Fc%F0%9F%87%A9%F0%9F%87%AAlife1
+vless://f477da56-641b-47ec-a7a0-f01a48545705@dl2.dlzed.com:443?path=%2Fupload%2F%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&host=fr.uploadsho.com&fp=firefox&type=ws&sni=fr.uploadsho.com#Fc%F0%9F%87%AB%F0%9F%87%B7Life2
+vless://f477da56-641b-47ec-a7a0-f01a48545705@dl2.dlzed.com:443?path=%2Fupload%2F%3Fed%3D2560&security=tls&alpn=h3&encryption=none&host=uk.uploadsho.com&fp=android&type=ws&sni=uk.uploadsho.com#Fc%F0%9F%87%AC%F0%9F%87%A7Life3
+vless://f477da56-641b-47ec-a7a0-f01a48545705@mtnde.hosmci.com:8011?security=none&encryption=none&host=www.speedtest.net&headerType=http&type=tcp#Fc%F0%9F%87%A9%F0%9F%87%AALife4
+vless://f477da56-641b-47ec-a7a0-f01a48545705@dl1.dlzed.com:443?path=%2Fupload%2F%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&host=tr.uploadsho.com&fp=chrome&type=ws&sni=tr.uploadsho.com#Fc%F0%9F%87%B9%F0%9F%87%B7Life5
+vless://f477da56-641b-47ec-a7a0-f01a48545705@dl2.dlzed.com:443?path=%2Fupload%2F%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&host=uk.uploadsho.com&fp=chrome&type=ws&sni=uk.uploadsho.com#Fc%E2%96%B6%EF%B8%8FYouTube
