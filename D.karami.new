@@ -1,5 +1,5 @@
 vless://77b07f91-1353-4979-afea-f5a0e7c0bafa@newpro.team-pluss.com:4594?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%97%93%EF%B8%8F%207%2F08%2F1404%20%F0%9F%97%93%EF%B8%8F
-vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@91.107.182.109:2052?security=none&encryption=none&type=httpupgrade#FC%F0%9F%87%A9%F0%9F%87%AAVIP1
+vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@91.107.182.109:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%A9%F0%9F%87%AAVIP1
 vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@172.232.35.19:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%AB%F0%9F%87%B7VIP2
 vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@172.235.163.241:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%B3%F0%9F%87%B1VIP3
 vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@172.239.118.43:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%AC%F0%9F%87%A7VIP4
@@ -7,7 +7,7 @@ vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@95.135.60.95:14569?path=%2Fwww.fast
 vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@88.209.249.195:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%B9%F0%9F%87%B7VIP6
 vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@5.161.157.222:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%BA%F0%9F%87%B8VIP7
 vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@45.88.89.85:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#FC%F0%9F%87%A6%F0%9F%87%B1VIP%2B%20Youtube
-vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@2.144.6.50:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#Namava%F0%9F%8E%A6Filimo
+vless://fd847ceb-8dbb-45fe-afef-e6292cff65a9@2.144.6.50:14569?path=%2Fwww.fastvpn.com.live.skornorth.com.zula.ir%3Fed%3D2048&security=none&encryption=none&type=ws#Namava%F0%9F%8E%A6Filimo%F0%9F%8E%A6Filmnet
 vless://75843c62-2b0e-4449-a676-9325f62991d9@aNiMaLlZoO-LoVe-ZoO.ZePaRo-LoVe.Ir:2025?mode=gun&security=reality&encryption=none&pbk=fhNhrO00QDSDI1CBmJY8RwK9t-zFmTjERgbgqcj8NTI&fp=chrome&type=grpc&serviceName=sadf2341sad&sni=journalofbigdata.springeropen.com#FC%F0%9F%87%B3%F0%9F%87%B1Life1
 vless://75843c62-2b0e-4449-a676-9325f62991d9@aNiMaLlZoO-LoVe-ZoO.ZePaRo-LoVe.Ir:2026?mode=gun&security=reality&encryption=none&pbk=fhNhrO00QDSDI1CBmJY8RwK9t-zFmTjERgbgqcj8NTI&fp=chrome&type=grpc&serviceName=sadf2341sad&sni=journalofbigdata.springeropen.com#FC%F0%9F%87%AC%F0%9F%87%A7Life2
 vless://75843c62-2b0e-4449-a676-9325f62991d9@aNiMaLlZoO-LoVe-ZoO.ZePaRo-LoVe.Ir:2027?mode=gun&security=reality&encryption=none&pbk=fhNhrO00QDSDI1CBmJY8RwK9t-zFmTjERgbgqcj8NTI&fp=chrome&type=grpc&serviceName=sadf2341sad&sni=journalofbigdata.springeropen.com#FC%F0%9F%87%A9%F0%9F%87%AALife3
