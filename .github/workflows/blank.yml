@@ -17,7 +17,7 @@ jobs:
 
       - name: Generate user subscription files
         run: |
-          users=("Peyman" "Maryam" "Hosein")
+          users=("Peyman" "Maryam" "Hosein" "M.bin")
           for user in "${users[@]}"; do
             cp servers.txt "$user"
           done
