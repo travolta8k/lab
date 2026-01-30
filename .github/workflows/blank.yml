@@ -17,16 +17,24 @@ jobs:
 
       - name: Generate user subscription files
         run: |
+          # All users
           users=("sis.peyman" "karam5" "karam4" "karam3" "Yosefi1" "Rahmani" "Peyman" "Mitra2" "Maryam" "M.bin" "Kh.peyman" "Kh.Vahid" "Keyvan" "Karami" "Hosein" "Foad3" "Foad.ios" "Family" "D.karm" "D.karami.new" "D.ka.new.2" "D.jafr.new" "Brother.sh" "Arshia" "Ahar" "Afroz" "Af.2")
-          
+
+          # Last server update datetime
+          UPDATE_TIME=$(date +"%Y-%m-%d %H:%M:%S")
+
+          # Generate user files
           for user in "${users[@]}"; do
-            cp servers.txt "$user"
+            echo "User: $user" > "$user"
+            echo "Last server update: $UPDATE_TIME" >> "$user"
+            echo "" >> "$user"
+            cat servers.txt >> "$user"
           done
 
       - name: Commit and push updates
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add $(ls | grep -v "servers.txt")   # همه فایل‌های کاربران اضافه میشن
+          git add $(ls | grep -v "servers.txt")
           git commit -m "Auto update user subscriptions" || echo "No changes"
           git push
