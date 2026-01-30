@@ -17,15 +17,16 @@ jobs:
 
       - name: Generate user subscription files
         run: |
-          users=("Peyman" "Maryam" "Hosein" "M.bin")
-          for user in "${users[@]}"; do
-            cp servers.txt "$user"
+          users="\"sis.peyman\" \"karam5\" \"karam4\" \"karam3\" \"Yosefi1\" \"Rahmani\" \"Peyman\" \"Mitra2\" \"Maryam\" \"M.bin\" \"Kh.peyman\" \"Kh.Vahid\" \"Keyvan\" \"Karami\" \"Hosein\" \"Foad3\" \"Foad.ios\" \"Family\" \"D.karm\" \"D.karami.new\" \"D.ka.new.2\" \"D.jafr.new\" \"Brother.sh\" \"Arshia\" \"Ahar\" \"Afroz\" \"Af.2\""
+
+          for user in $users; do
+            cp servers.txt $user
           done
 
       - name: Commit and push updates
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add Peyman Maryam Hosein
+          git add .
           git commit -m "Auto update user subscriptions" || echo "No changes"
           git push
