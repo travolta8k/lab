@@ -3,7 +3,7 @@ name: Generate User Subscriptions
 on:
   push:
     paths:
-      - "servers.txt"
+      - "server.list"
 
 jobs:
   build:
@@ -14,16 +14,16 @@ jobs:
 
       - name: Generate user subscription files
         run: |
-          mkdir -p users
-          # نام کاربران: Peyman, Maryam, Hosein
-          for user in Peyman Maryam Hosein; do
-            cp servers.txt users/${user}.txt
+          users=("Peyman" "Maryam" "Hosein")
+          
+          for user in "${users[@]}"; do
+            cp server.list "$user"
           done
 
       - name: Commit and push updates
         run: |
           git config --local user.name "github-actions"
           git config --local user.email "actions@github.com"
-          git add users/*.txt
+          git add Peyman Maryam Hosein
           git commit -m "Auto update user subscriptions" || echo "No changes"
           git push
