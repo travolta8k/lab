@@ -3,7 +3,7 @@ name: Generate User Subscriptions
 on:
   push:
     paths:
-      - "server.list"
+      - "server.txt"
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
           users=("Peyman" "Maryam" "Hosein")
           
           for user in "${users[@]}"; do
-            cp server.list "$user"
+            cp server.txt "$user"
           done
 
       - name: Commit and push updates
