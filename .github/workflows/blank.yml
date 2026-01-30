@@ -4,57 +4,26 @@ on:
   push:
     paths:
       - "servers.txt"
-
-permissions:
-  contents: write
+      - "users.txt"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Generate user subscription files
         run: |
-          users=(
-            "sis.peyman"
-            "karam5"
-            "karam4"
-            "karam3"
-            "Yosefi1"
-            "Rahmani"
-            "Peyman"
-            "Mitra2"
-            "Maryam"
-            "M.bin"
-            "Kh.peyman"
-            "Kh.Vahid"
-            "Keyvan"
-            "Karami"
-            "Hosein"
-            "Foad3"
-            "Foad.ios"
-            "Family"
-            "D.karm"
-            "D.karami.new"
-            "D.ka.new.2"
-            "D.jafr.new"
-            "Brother.sh"
-            "Arshia"
-            "Ahar"
-            "Afroz"
-            "Af.2"
-          )
-
-          for user in "${users[@]}"; do
+          while IFS= read -r user; do
+            [ -z "$user" ] && continue
             cp servers.txt "$user"
-          done
+          done < users.txt
 
       - name: Commit and push updates
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git add "${users[@]}"
+          git config --local user.name "github-actions"
+          git config --local user.email "actions@github.com"
+          git add .
           git commit -m "Auto update user subscriptions" || echo "No changes"
           git push
