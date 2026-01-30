@@ -15,7 +15,8 @@ jobs:
       - name: Generate user subscription files
         run: |
           mkdir -p users
-          for user in PeymanHoseinMaryam; do
+          # نام کاربران: Peyman, Maryam, Hosein
+          for user in Peyman Maryam Hosein; do
             cp servers.txt users/${user}.txt
           done
 
