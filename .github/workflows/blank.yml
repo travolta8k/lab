@@ -1,0 +1,28 @@
+name: Generate User Subscriptions
+
+on:
+  push:
+    paths:
+      - "servers.txt"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate user subscription files
+        run: |
+          mkdir -p users
+          for user in peyman Hosein user3; do
+            cp servers.txt users/${user}.txt
+          done
+
+      - name: Commit and push updates
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "actions@github.com"
+          git add users/*.txt
+          git commit -m "Auto update user subscriptions" || echo "No changes"
+          git push
