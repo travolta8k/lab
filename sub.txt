@@ -1,0 +1,2 @@
+vless://UUID1@yourserver.com:443?encryption=none&security=tls&type=ws&path=/yourpath#Server1
+vless://UUID2@yourserver.com:443?encryption=none&security=tls&type=ws&path=/yourpath#Server2
