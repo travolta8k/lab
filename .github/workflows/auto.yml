@@ -1,8 +1,8 @@
-name: Auto Update Servers
+name: GOD MODE Auto Update Servers
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # هر 15 دقیقه اجرا می‌شود
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -13,28 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # گرفتن آخرین نسخه از مخزن
       - uses: actions/checkout@v4
 
-      # نصب Python
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # نصب Telethon برای fetch.py
       - name: Install dependencies
-        run: pip install telethon
+        run: pip install requests
 
-      # اجرای fetch.py هوشمند
-      - name: Fetch links
+      - name: Run GOD MODE Fetch
         run: python fetch.py
 
-      # ذخیره تغییرات و Push
       - name: Commit updates
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
           git add servers.txt server_manual.txt
-          git commit -m "Auto update servers: $(date)" || echo "No changes"
+          git commit -m "GOD MODE Auto Update" || echo "No changes"
           git push
