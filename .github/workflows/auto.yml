@@ -2,7 +2,7 @@ name: Auto Update Telegram Links
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/15 * * * *"   # هر 15 دقیقه اجرا شود
   workflow_dispatch:
 
 permissions:
@@ -25,12 +25,12 @@ jobs:
         run: pip install requests
 
       - name: Fetch Telegram links
-        run: python fetch.py
+        run: python lab/fetch.py   # ← مسیر اصلاح شده
 
       - name: Commit and Push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add servers.txt
+          git add lab/servers.txt
           git commit -m "Auto update servers" || echo "No changes"
           git push
