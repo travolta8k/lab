@@ -1,90 +1,82 @@
-import os
+import requests
 import re
-import asyncio
-from telethon import TelegramClient
+import os
+import time
+from datetime import datetime
 
-# Telegram API (تو فرستادی)
-api_id = 37255161
-api_hash = "9417c668138b16b5f1e90265096ac073"
+channels = [
+    "NETMelliAnti",
+    "Proxy_v2ry",
+    "V2RootConfigPilot"
+]
 
-# کانال‌ها
-channels = ["NETMelliAnti", "Proxy_v2ry", "V2RootConfigPilot"]
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+}
 
-# مسیر فایل‌ها
-current_dir = os.path.dirname(os.path.abspath(__file__))
-servers_file = os.path.join(current_dir, "servers.txt")
-manual_file = os.path.join(current_dir, "server_manual.txt")
+servers_file = "servers.txt"
+auto_file = "server_manual.txt"
 
-# خواندن سرورهای خودت (اولویت بالا)
-existing_links = []
-existing_numbers = {}  # نگه داشتن شماره هر لینک
-if os.path.exists(servers_file):
-    with open(servers_file, "r") as f:
-        for line in f:
-            line = line.strip()
-            if line:
-                existing_links.append(line)
-                # جدا کردن شماره King
-                if "#King_" in line:
-                    parts = line.rsplit("#King_", 1)
-                    existing_numbers[parts[0]] = int(parts[1])
+print("GOD MODE Fetch Started...")
 
-# خواندن لینک‌های دستی
+auto_links = []
+
+# --- گرفتن لینک از تلگرام وب ---
+for ch in channels:
+    try:
+        url = f"https://t.me/s/{ch}"
+        r = requests.get(url, headers=headers, timeout=20)
+
+        links = re.findall(
+            r'(vless|vmess|trojan|ss)://[^\s"\'<>]+',
+            r.text,
+            re.IGNORECASE
+        )
+
+        auto_links.extend(links)
+        print(f"{ch}: {len(links)} found")
+
+        time.sleep(1)
+
+    except Exception as e:
+        print(f"Channel error {ch}: {e}")
+
+# حذف تکراری
+auto_links = list(dict.fromkeys(auto_links))
+
+# پاکسازی لینک خراب
+auto_links = [
+    link for link in auto_links
+    if len(link) > 20 and "://" in link
+]
+
+# --- خواندن لینک‌های دستی (اولویت بالا) ---
 manual_links = []
-if os.path.exists(manual_file):
-    with open(manual_file, "r") as f:
-        manual_links = [line.strip() for line in f if line.strip()]
+if os.path.exists(servers_file):
+    with open(servers_file, "r", encoding="utf-8") as f:
+        manual_links = [
+            line.strip() for line in f
+            if line.strip() and not line.startswith("#")
+        ]
 
-# تابع گرفتن لینک‌ها از کانال‌ها
-async def fetch_channel_links():
-    auto_links = []
-    client = TelegramClient("session", api_id, api_hash)
-    async with client:
-        for ch in channels:
-            try:
-                async for msg in client.iter_messages(ch, limit=300):
-                    if msg.text:
-                        found = re.findall(r'(vless|vmess|trojan|ss)://[^\s]+', msg.text, re.I)
-                        auto_links.extend(found)
-                print(f"Fetched {len(auto_links)} from {ch}")
-            except Exception as e:
-                print(f"Error {ch}: {e}")
-    return list(dict.fromkeys(auto_links))
-
-# اجرای اصلی
-async def main():
-    auto_links = await fetch_channel_links()
-
-    # ترکیب نهایی
-    combined_links = existing_links.copy()
-
-    # اضافه کردن لینک‌های دستی اگر نبودند
-    for link in manual_links:
-        if link not in [l.rsplit("#King_", 1)[0] for l in combined_links]:
-            combined_links.append(link)
-
-    # اضافه کردن لینک‌های کانال اگر نبودند
+# --- ذخیره لینک‌های تلگرام جدا ---
+with open(auto_file, "w", encoding="utf-8") as f:
     for link in auto_links:
-        if link not in [l.rsplit("#King_", 1)[0] for l in combined_links]:
-            combined_links.append(link)
+        f.write(link + "\n")
 
-    # شماره‌گذاری
-    final_list = []
-    current_number = 1
-    for line in combined_links:
-        base_link = line.rsplit("#King_", 1)[0]
-        if base_link in existing_numbers:
-            number = existing_numbers[base_link]
-        else:
-            number = current_number
-        final_list.append(f"{base_link}#King_{number}")
-        current_number = max(current_number, number + 1)
+# --- ترکیب نهایی: دستی اول ---
+final_links = manual_links + auto_links
 
-    # ذخیره
-    with open(servers_file, "w") as f:
-        for line in final_list:
-            f.write(line + "\n")
+# حذف تکراری بین دستی و اتومات
+final_links = list(dict.fromkeys(final_links))
 
-    print(f"Done! Total links: {len(final_list)}")
+# --- زمان ---
+now = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
-asyncio.run(main())
+# --- نوشتن خروجی ---
+with open(servers_file, "w", encoding="utf-8") as f:
+    f.write(f"# KING GOD MODE — Updated: {now}\n")
+    for i, link in enumerate(final_links, 1):
+        f.write(f"{link}#King_{i}\n")
+
+print(f"GOD MODE DONE ✅ Total: {len(final_links)}")
