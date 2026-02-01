@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run fetch script
+      - name: Fetch Telegram links
         run: python fetch.py
 
       - name: Commit and Push
