@@ -24,13 +24,13 @@ jobs:
         run: pip install requests
 
       - name: Fetch links
-        # تغییر مهم: اجرای پایتون مستقیماً در محل فایل
-        run: python lab/fetch.py
+        # اصلاح آدرس: چون فایل در ریشه اصلی است، دیگر نیازی به lab/ نیست
+        run: python fetch.py
 
       - name: Commit updates
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add lab/servers.txt
+          git add servers.txt
           git commit -m "Auto update: $(date)" || echo "No changes"
           git push
