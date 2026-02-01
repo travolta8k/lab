@@ -1,0 +1,38 @@
+name: Auto Update Telegram Links
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # هر 15 دقیقه اجرا می‌شه
+  workflow_dispatch:          # می‌تونی دستی هم اجراش کنی
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install telethon
+
+      - name: Fetch Telegram links
+        env:
+          TG_API_ID: ${{ secrets.TG_API_ID }}
+          TG_API_HASH: ${{ secrets.TG_API_HASH }}
+        run: python fetch.py
+
+      - name: Combine with manual links
+        run: cat server_manual.txt server_auto.txt > server.txt
+
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add server_auto.txt server.txt
+          git commit -m "Auto update Telegram links" || echo "No changes"
+          git push
