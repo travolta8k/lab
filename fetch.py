@@ -19,7 +19,6 @@ for ch in channels:
         url = f"https://t.me/s/{ch}"
         r = requests.get(url, headers=headers, timeout=20)
         html = r.text
-        
         links = re.findall(r'(vmess://\S+|vless://\S+|trojan://\S+)', html, re.I)
         all_links.extend(links)
         time.sleep(2)
