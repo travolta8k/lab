@@ -11,6 +11,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -23,7 +24,8 @@ jobs:
         run: pip install requests
 
       - name: Fetch links
-        run: python lab/fetch.py  # اجرای فایل از داخل پوشه lab
+        # تغییر مهم: اجرای پایتون مستقیماً در محل فایل
+        run: python lab/fetch.py
 
       - name: Commit updates
         run: |
