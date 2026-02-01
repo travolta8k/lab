@@ -1,41 +1,52 @@
 import requests
 import re
-import time
 import os
 
-# لیست کانال‌های هدف
+# لیست کانال‌ها
 channels = ["NETMelliAnti", "Proxy_v2ry", "V2RootConfigPilot"]
 headers = {"User-Agent": "Mozilla/5.0"}
 all_links = []
 
-print("Searching for links...")
+# مسیر فایل‌ها
+current_dir = os.path.dirname(os.path.abspath(__file__))
+servers_file = os.path.join(current_dir, "servers.txt")        # لینک‌های خودتونی
+manual_file = os.path.join(current_dir, "server_manual.txt")   # لینک‌های اتوماتیک
+
+# خواندن لینک‌های خودتونی
+custom_links = []
+if os.path.exists(servers_file):
+    with open(servers_file, "r") as f:
+        custom_links = [line.strip() for line in f if line.strip()]
+
+print("Searching for links from channels...")
 
 for ch in channels:
     try:
         url = f"https://t.me/s/{ch}"
         r = requests.get(url, headers=headers, timeout=20)
-        # استخراج لینک‌ها با فرمت درست
+        # استخراج لینک‌ها
         links = re.findall(r'(vless|vmess|trojan|ss)://[^\s"<]+', r.text, re.I)
         all_links.extend(links)
-        print(f"Channel {ch}: {len(links)} links found.")
-        time.sleep(1)
+        print(f"Done: {ch}, found {len(links)} links")
     except Exception as e:
         print(f"Error on {ch}: {e}")
 
-# حذف تکراری‌ها
-all_links = list(dict.fromkeys(all_links))
-
-# خواندن لینک‌های دستی (اگر فایل وجود داشت)
+# خواندن لینک‌های اتوماتیک قبلی
 manual_links = []
-if os.path.exists("server_manual.txt"):
-    with open("server_manual.txt", "r") as f:
+if os.path.exists(manual_file):
+    with open(manual_file, "r") as f:
         manual_links = [line.strip() for line in f if line.strip()]
 
-final_links = manual_links + all_links
+# ترکیب لینک‌ها و حذف تکراری‌ها
+new_links = list(dict.fromkeys(all_links + manual_links))
+new_links = [l for l in new_links if l not in custom_links]
 
-# ذخیره در فایل خروجی
-with open("servers.txt", "w") as f:
+# ترکیب نهایی: خودتونی + اتوماتیک
+final_links = custom_links + new_links
+
+# ذخیره در servers.txt
+with open(servers_file, "w") as f:
     for i, link in enumerate(final_links, 1):
         f.write(f"{link}#King_{i}\n")
 
-print(f"Update Finished! Total servers: {len(final_links)}")
+print(f"Update Finished. Total links: {len(final_links)}")
