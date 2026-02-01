@@ -8,10 +8,7 @@ channels = [
     "V2RootConfigPilot"
 ]
 
-headers = {
-    "User-Agent": "Mozilla/5.0"
-}
-
+headers = {"User-Agent": "Mozilla/5.0"}
 all_links = []
 
 for ch in channels:
@@ -29,14 +26,14 @@ all_links = list(dict.fromkeys(all_links))
 
 manual_links = []
 try:
-    with open("server_manual.txt") as f:
+    with open("lab/server_manual.txt") as f:
         manual_links = [line.strip() for line in f if line.strip()]
 except:
     pass
 
 final_links = manual_links + all_links
 
-with open("servers.txt", "w") as f:
+with open("lab/servers.txt", "w") as f:
     for i, link in enumerate(final_links, 1):
         f.write(f"{link}#king{i}\n")
 
