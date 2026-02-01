@@ -1,46 +1,36 @@
-import requests
-import re
-import time
-import os
+name: Auto Update Servers
 
-# لیست کانال‌ها
-channels = [
-    "NETMelliAnti",
-    "Proxy_v2ry",
-    "V2RootConfigPilot"
-]
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
 
-headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
-all_links = []
+permissions:
+  contents: write
 
-print("Searching for links...")
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-for ch in channels:
-    try:
-        url = f"https://t.me/s/{ch}"
-        r = requests.get(url, headers=headers, timeout=20)
-        # استخراج هوشمند لینک‌ها
-        links = re.findall(r'(vless|vmess|trojan|ss)://[^\s"<]+', r.text, re.I)
-        all_links.extend(links)
-        print(f"Done: {ch} | Found: {len(links)}")
-        time.sleep(1)
-    except Exception as e:
-        print(f"Error on {ch}: {e}")
+    steps:
+      - uses: actions/checkout@v4
 
-# حذف تکراری‌ها
-all_links = list(dict.fromkeys(all_links))
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-# خواندن لینک‌های دستی (چون فایل در صفحه‌ی اصلی است)
-manual_links = []
-if os.path.exists("server_manual.txt"):
-    with open("server_manual.txt", "r") as f:
-        manual_links = [line.strip() for line in f if line.strip()]
+      - name: Install dependencies
+        run: pip install requests
 
-final_links = manual_links + all_links
+      - name: Fetch links
+        # اصلاح شده: فایل مستقیماً در ریشه پروژه است
+        run: python fetch.py
 
-# ذخیره در فایل servers.txt در صفحه‌ی اصلی
-with open("servers.txt", "w") as f:
-    for i, link in enumerate(final_links, 1):
-        f.write(f"{link}#King_{i}\n")
-
-print(f"Finished! Total servers: {len(final_links)}")
+      - name: Commit updates
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add servers.txt
+          git commit -m "Auto update: $(date)" || echo "No changes"
+          git push
