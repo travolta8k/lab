@@ -1,52 +1,50 @@
 import requests
 import re
+import time
 import os
 
 # لیست کانال‌ها
-channels = ["NETMelliAnti", "Proxy_v2ry", "V2RootConfigPilot"]
+channels = [
+    "NETMelliAnti",
+    "Proxy_v2ry",
+    "V2RootConfigPilot"
+]
+
 headers = {"User-Agent": "Mozilla/5.0"}
 all_links = []
 
-# مسیر فایل‌ها
-current_dir = os.path.dirname(os.path.abspath(__file__))
-servers_file = os.path.join(current_dir, "servers.txt")        # لینک‌های خودتونی
-manual_file = os.path.join(current_dir, "server_manual.txt")   # لینک‌های اتوماتیک
-
-# خواندن لینک‌های خودتونی
-custom_links = []
-if os.path.exists(servers_file):
-    with open(servers_file, "r") as f:
-        custom_links = [line.strip() for line in f if line.strip()]
-
-print("Searching for links from channels...")
-
+# شروع فرآیند گرفتن لینک‌ها
 for ch in channels:
     try:
         url = f"https://t.me/s/{ch}"
         r = requests.get(url, headers=headers, timeout=20)
-        # استخراج لینک‌ها
-        links = re.findall(r'(vless|vmess|trojan|ss)://[^\s"<]+', r.text, re.I)
+        html = r.text
+        # پیدا کردن لینک‌ها
+        links = re.findall(r'(vmess://\S+|vless://\S+|trojan://\S+)', html, re.I)
         all_links.extend(links)
-        print(f"Done: {ch}, found {len(links)} links")
+        time.sleep(2)
     except Exception as e:
-        print(f"Error on {ch}: {e}")
+        print("Error on", ch, e)
 
-# خواندن لینک‌های اتوماتیک قبلی
+# حذف تکراری‌ها
+all_links = list(dict.fromkeys(all_links))
+
 manual_links = []
-if os.path.exists(manual_file):
-    with open(manual_file, "r") as f:
-        manual_links = [line.strip() for line in f if line.strip()]
+# اصلاح مسیر فایل دستی به صفحه اصلی
+try:
+    if os.path.exists("server_manual.txt"):
+        with open("server_manual.txt") as f:
+            manual_links = [line.strip() for line in f if line.strip()]
+except:
+    pass
 
-# ترکیب لینک‌ها و حذف تکراری‌ها
-new_links = list(dict.fromkeys(all_links + manual_links))
-new_links = [l for l in new_links if l not in custom_links]
+final_links = manual_links + all_links
 
-# ترکیب نهایی: خودتونی + اتوماتیک
-final_links = custom_links + new_links
-
-# ذخیره در servers.txt
-with open(servers_file, "w") as f:
+# ذخیره در فایل اصلی در ریشه پروژه
+with open("servers.txt", "w") as f:
     for i, link in enumerate(final_links, 1):
-        f.write(f"{link}#King_{i}\n")
+        # تمیز کردن لینک از کاراکترهای اضافه احتمالی HTML
+        clean_link = link.split('"')[0].split("'")[0].split('<')[0]
+        f.write(f"{clean_link}#king{i}\n")
 
-print(f"Update Finished. Total links: {len(final_links)}")
+print("OK — servers.txt updated")
