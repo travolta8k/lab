@@ -1,6 +1,6 @@
-cat > fetch.py << 'EOF'
 import requests
 import re
+import time
 
 channels = [
     "NETMelliAnti",
@@ -8,19 +8,26 @@ channels = [
     "V2RootConfigPilot"
 ]
 
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
 all_links = []
 
 for ch in channels:
-    url = f"https://t.me/s/{ch}"
-    html = requests.get(url, timeout=15).text
-    
-    links = re.findall(r'(vmess://\S+|vless://\S+|trojan://\S+)', html, re.I)
-    all_links.extend(links)
+    try:
+        url = f"https://t.me/s/{ch}"
+        r = requests.get(url, headers=headers, timeout=20)
+        html = r.text
+        
+        links = re.findall(r'(vmess://\S+|vless://\S+|trojan://\S+)', html, re.I)
+        all_links.extend(links)
+        time.sleep(2)
+    except Exception as e:
+        print("Error on", ch, e)
 
-# حذف تکراری
 all_links = list(dict.fromkeys(all_links))
 
-# خواندن دستی
 manual_links = []
 try:
     with open("server_manual.txt") as f:
@@ -30,10 +37,8 @@ except:
 
 final_links = manual_links + all_links
 
-# ذخیره خروجی
 with open("servers.txt", "w") as f:
     for i, link in enumerate(final_links, 1):
         f.write(f"{link}#king{i}\n")
 
-print("Done. servers.txt updated.")
-EOF
+print("OK — servers.txt updated")
