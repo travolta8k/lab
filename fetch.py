@@ -1,40 +1,51 @@
 import requests
 import re
 import time
+import os
 
+# لیست کانال‌ها
 channels = [
     "NETMelliAnti",
     "Proxy_v2ry",
     "V2RootConfigPilot"
 ]
 
-headers = {"User-Agent": "Mozilla/5.0"}
+headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 all_links = []
+
+# پیدا کردن مسیر فعلی فایل (پوشه lab)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+print("Fetching links...")
 
 for ch in channels:
     try:
         url = f"https://t.me/s/{ch}"
         r = requests.get(url, headers=headers, timeout=20)
-        html = r.text
-        links = re.findall(r'(vmess://\S+|vless://\S+|trojan://\S+)', html, re.I)
+        # استخراج تمیز لینک‌ها
+        links = re.findall(r'(vless|vmess|trojan|ss)://[^\s"<]+', r.text, re.I)
         all_links.extend(links)
-        time.sleep(2)
+        print(f"Found {len(links)} in {ch}")
+        time.sleep(1)
     except Exception as e:
-        print("Error on", ch, e)
+        print(f"Error on {ch}: {e}")
 
+# حذف تکراری‌ها
 all_links = list(dict.fromkeys(all_links))
 
+# آدرس فایل‌ها در همان پوشه lab
+manual_file = os.path.join(current_dir, "server_manual.txt")
+output_file = os.path.join(current_dir, "servers.txt")
+
 manual_links = []
-try:
-    with open("lab/server_manual.txt") as f:
+if os.path.exists(manual_file):
+    with open(manual_file, "r") as f:
         manual_links = [line.strip() for line in f if line.strip()]
-except:
-    pass
 
 final_links = manual_links + all_links
 
-with open("lab/servers.txt", "w") as f:
+with open(output_file, "w") as f:
     for i, link in enumerate(final_links, 1):
-        f.write(f"{link}#king{i}\n")
+        f.write(f"{link}#King_{i}\n")
 
-print("OK — servers.txt updated")
+print(f"Update Finished. Total: {len(final_links)}")
