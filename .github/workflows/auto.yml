@@ -1,6 +1,4 @@
-mkdir -p .github/workflows
-cat > .github/workflows/auto.yml << 'EOF'
-name: Auto Update Servers
+name: Auto Update Telegram Links
 
 on:
   schedule:
@@ -13,20 +11,26 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Install Python
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
         run: pip install requests
 
-      - name: Fetch links
+      - name: Run fetch script
         run: python fetch.py
 
-      - name: Commit updates
+      - name: Commit and Push
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add servers.txt
           git commit -m "Auto update servers" || echo "No changes"
           git push
-EOF
