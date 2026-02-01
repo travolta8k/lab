@@ -1,50 +1,90 @@
-import requests
-import re
 import os
+import re
+import asyncio
+from telethon import TelegramClient
 
-# لیست کانال‌ها
+# Telegram API (تو فرستادی)
+api_id = 37255161
+api_hash = "9417c668138b16b5f1e90265096ac073"
+
+# کانال‌ها
 channels = ["NETMelliAnti", "Proxy_v2ry", "V2RootConfigPilot"]
-headers = {"User-Agent": "Mozilla/5.0"}
-all_links = []
 
-# مسیر فایل‌ها همان مسیر فعلی باقی می‌ماند
-servers_file = "servers.txt"        # لینک‌های خودتونی
-manual_file = "server_manual.txt"   # لینک‌های اتوماتیک
+# مسیر فایل‌ها
+current_dir = os.path.dirname(os.path.abspath(__file__))
+servers_file = os.path.join(current_dir, "servers.txt")
+manual_file = os.path.join(current_dir, "server_manual.txt")
 
-# خواندن لینک‌های خودتونی
-custom_links = []
+# خواندن سرورهای خودت (اولویت بالا)
+existing_links = []
+existing_numbers = {}  # نگه داشتن شماره هر لینک
 if os.path.exists(servers_file):
     with open(servers_file, "r") as f:
-        custom_links = [line.strip() for line in f if line.strip()]
+        for line in f:
+            line = line.strip()
+            if line:
+                existing_links.append(line)
+                # جدا کردن شماره King
+                if "#King_" in line:
+                    parts = line.rsplit("#King_", 1)
+                    existing_numbers[parts[0]] = int(parts[1])
 
-print("Searching for links from channels...")
-
-for ch in channels:
-    try:
-        url = f"https://t.me/s/{ch}"
-        r = requests.get(url, headers=headers, timeout=20)
-        links = re.findall(r'(vless|vmess|trojan|ss)://[^\s"<]+', r.text, re.I)
-        all_links.extend(links)
-        print(f"Done: {ch}, found {len(links)} links")
-    except Exception as e:
-        print(f"Error on {ch}: {e}")
-
-# خواندن لینک‌های اتوماتیک قبلی
+# خواندن لینک‌های دستی
 manual_links = []
 if os.path.exists(manual_file):
     with open(manual_file, "r") as f:
         manual_links = [line.strip() for line in f if line.strip()]
 
-# ترکیب لینک‌ها و حذف تکراری‌ها
-new_links = list(dict.fromkeys(all_links + manual_links))
-new_links = [l for l in new_links if l not in custom_links]
+# تابع گرفتن لینک‌ها از کانال‌ها
+async def fetch_channel_links():
+    auto_links = []
+    client = TelegramClient("session", api_id, api_hash)
+    async with client:
+        for ch in channels:
+            try:
+                async for msg in client.iter_messages(ch, limit=300):
+                    if msg.text:
+                        found = re.findall(r'(vless|vmess|trojan|ss)://[^\s]+', msg.text, re.I)
+                        auto_links.extend(found)
+                print(f"Fetched {len(auto_links)} from {ch}")
+            except Exception as e:
+                print(f"Error {ch}: {e}")
+    return list(dict.fromkeys(auto_links))
 
-# ترکیب نهایی: خودتونی + اتوماتیک
-final_links = custom_links + new_links
+# اجرای اصلی
+async def main():
+    auto_links = await fetch_channel_links()
 
-# ذخیره در servers.txt
-with open(servers_file, "w") as f:
-    for i, link in enumerate(final_links, 1):
-        f.write(f"{link}#King_{i}\n")
+    # ترکیب نهایی
+    combined_links = existing_links.copy()
 
-print(f"Update Finished. Total links: {len(final_links)}")
+    # اضافه کردن لینک‌های دستی اگر نبودند
+    for link in manual_links:
+        if link not in [l.rsplit("#King_", 1)[0] for l in combined_links]:
+            combined_links.append(link)
+
+    # اضافه کردن لینک‌های کانال اگر نبودند
+    for link in auto_links:
+        if link not in [l.rsplit("#King_", 1)[0] for l in combined_links]:
+            combined_links.append(link)
+
+    # شماره‌گذاری
+    final_list = []
+    current_number = 1
+    for line in combined_links:
+        base_link = line.rsplit("#King_", 1)[0]
+        if base_link in existing_numbers:
+            number = existing_numbers[base_link]
+        else:
+            number = current_number
+        final_list.append(f"{base_link}#King_{number}")
+        current_number = max(current_number, number + 1)
+
+    # ذخیره
+    with open(servers_file, "w") as f:
+        for line in final_list:
+            f.write(line + "\n")
+
+    print(f"Done! Total links: {len(final_list)}")
+
+asyncio.run(main())
