@@ -11,7 +11,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -24,7 +23,6 @@ jobs:
         run: pip install requests
 
       - name: Fetch links
-        # اصلاح شده: فایل مستقیماً در ریشه پروژه است
         run: python fetch.py
 
       - name: Commit updates
