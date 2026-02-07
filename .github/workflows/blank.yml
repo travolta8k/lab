@@ -17,7 +17,7 @@ jobs:
 
       - name: Generate user subscription files
         run: |
-          users=("sis.peyman" "karam5" "karam4" "karam3" "Yosefi1" "Rahmani" "Peyman" "Mitra2" "Maryam" "M.bin" "Kh.peyman" "Kh.Vahid" "Keyvan" "Karami" "Hosein" "Foad3" "Foad.ios" "Family" "D.karm" "D.karami.new" "D.ka.new.2" "D.jafr.new" "Brother.sh" "Arshia" "Ahar" "Afroz" "Af.2")
+          users=("sis.peyman" "karam5" "karam4" "karam3" "Yosefi1" "1Rahmani" "Peyman" "Mitra2" "Maryam" "1M.bin" "Kh.peyman" "Kh.Vahid" "Keyvan" "1Karami" "Hosein" "Foad3" "Foad.ios" "Family" "D.karm" "D.karami.new" "D.ka.new.2" "D.jafr.new" "Brother.sh" "Arshia" "Ahar" "1Afroz" "1Af.2")
           
           for user in "${users[@]}"; do
             cp servers.txt "$user"
