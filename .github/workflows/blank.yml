@@ -3,7 +3,7 @@ name: Generate User Subscriptions
 on:
   push:
     paths:
-      - "servers.txt"
+      - "s1ervers.txt"
 
 permissions:
   contents: write
