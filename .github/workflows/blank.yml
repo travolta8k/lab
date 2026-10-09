@@ -17,8 +17,8 @@ jobs:
 
       - name: Generate user subscription files
         run: |
-          users=("karam5" "karam4" "karam3" "Yosefi1" "Peyman" "Mitra2" "Maryam" "1M.bin" "Karami" "Kh.peyman" "M.bin" "Kh.Vahid" "Keyvan" "Hosein" "Foad3" "Foad.ios" "Family" "D.karm" "D.karami.new" "D.ka.new.2" "D.jafr.new" "Brother.sh" "Arshia" "Ahar")
-          
+          users=("Abji" "Brother.sh" "D.Farid" "D.k.f" "D.k.f2" "D.karm" "Farid" "Foad_m" "Hosein" "Mitra+Mahin" "Peyman" "Rahmani" "Roham+Mehdi" "Roter" "Yosefi" "morsa" "mother_sheida" "karami" "sheida.me")
+
           for user in "${users[@]}"; do
             cp servers.txt "$user"
           done
@@ -27,6 +27,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add $(ls | grep -v "servers.txt")   # همه فایل‌های کاربران اضافه میشن
+          git add $(ls | grep -v "servers.txt")
           git commit -m "Auto update user subscriptions" || echo "No changes"
           git push
