@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   build:
-    if: false
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +17,7 @@ jobs:
 
       - name: Generate user subscription files
         run: |
-          users=("Abji" "D.k.f" "D.k.f33" "D.k.f4" "D.karm" "D.Mitra" "D.n.jaf" "Foad_m" "Karami" "Mitra+Mahin" "Peyman" "Rahmani" "Roham+Mehdi" "Roter" "morsa" "mother_sheida" "sheida.me")
+          users=("Abji" "Brother.sh" "D.Farid" "D.k.f" "D.k.f33" "D.k.f4" "D.karm" "D.Mitra" "D.n.jaf" "Farid" "Foad_m" "Hosein" "Karami" "Mitra+Mahin" "Peyman" "Rahmani" "Roter" "mother_sheida" "sheida.me")
 
           for user in "${users[@]}"; do
             cp servers.txt "$user"
